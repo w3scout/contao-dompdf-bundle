@@ -1,0 +1,41 @@
+{
+  "name": "w3scout/contao-dompdf-bundle",
+  "description": "PROOF OF CONCEPT! DO NOT INSTALL!!!! Use DOMPDF to export articles as PDF.",
+  "keywords":["contao","dompdf","pdf"],
+  "type": "contao-bundle",
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Darko Selesi",
+      "homepage": "https://github.com/w3scout/contao-dompdf-bundle",
+      "role":"Developer"
+    }
+  ],
+  "support":{
+      "issues":"https://github.com/w3scout/contao-dompdf-bundle/issues",
+      "source":"https://github.com/w3scout/contao-dompdf-bundle"
+  },
+  "require": {
+    "php": ">=5.6.0",
+    "contao/core-bundle": "^4.3",
+    "dompdf/dompdf": ">=0.8.0",
+    "coldtrick/imagick": ">=1.0"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0"
+  },
+  "conflict": {
+    "contao/manager-plugin": "<2.0 || >=3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "W3Scout\\DompdfBundle\\": "src/"
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ]
+  },
+  "extra": {
+    "contao-manager-plugin": "W3Scout\\DompdfBundle\\ContaoManager\\Plugin"
+  }
+}
