@@ -18,8 +18,8 @@
   "require": {
     "php": ">=5.6.0",
     "contao/core-bundle": "^4.3",
-    "dompdf/dompdf": ">=0.8.0",
-    "coldtrick/imagick": ">=1.0"
+    "dompdf/dompdf": "dev-master",
+    "imagine/imagine": "dev-master"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0"
