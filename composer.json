@@ -1,6 +1,6 @@
 {
   "name": "w3scout/contao-dompdf-bundle",
-  "description": "PROOF OF CONCEPT! DO NOT INSTALL!!!! Use DOMPDF to export articles as PDF.",
+  "description": "Use DOMPDF to export articles as PDF.",
   "keywords":["contao","dompdf","pdf"],
   "type": "contao-bundle",
   "license": "LGPL-3.0+",

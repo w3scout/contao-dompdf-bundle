@@ -1,4 +1,2 @@
-# contao-dompdf-bundle
-
-PROOF OF CONCEPT! DO NOT INSTALL!!!
+# Contao DOMPDF Bundle
 
