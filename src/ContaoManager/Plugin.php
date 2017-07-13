@@ -4,7 +4,7 @@
  * @author     Darko Selesi (w3scout)
  * @package    dompdf
  * @license    LGPL-3.0+
- * @see	       https://github.com/w3scout/spotify.git
+ * @see	       https://github.com/w3scout/contao-dompdf-bundle
  *
  */
 
