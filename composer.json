@@ -12,6 +12,7 @@
     }
   ],
   "support":{
+      "email":"hallo@w3scouts.com",
       "issues":"https://github.com/w3scout/contao-dompdf-bundle/issues",
       "source":"https://github.com/w3scout/contao-dompdf-bundle"
   },
