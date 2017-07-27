@@ -1,5 +1,6 @@
 {
   "name": "w3scout/contao-dompdf-bundle",
+  "homepage":"https://github.com/w3scout/contao-dompdf-bundle",
   "description": "Use DOMPDF to export articles as PDF.",
   "keywords":["contao","dompdf","pdf"],
   "type": "contao-bundle",
