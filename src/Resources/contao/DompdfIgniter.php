@@ -62,7 +62,6 @@ class DompdfIgniter extends \Frontend
 		$strHtml .= '<head>' . "\n";
 		$strHtml .= '<title>' . $objArticle->title . '</title>' . "\n";
 		$strHtml .= '<meta http-equiv="Content-Type" content="text/html; charset=' . $GLOBALS['TL_CONFIG']['characterSet'] . '" />' . "\n";
-		#$strHtml .= '<base href="' . $this->Environment->base . '"></base>' . "\n";
 
         // Add stylesheets
 		$objStylesheet = $this->Database->execute("SELECT * FROM tl_style_sheet");
