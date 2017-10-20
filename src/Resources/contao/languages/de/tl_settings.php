@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
@@ -39,5 +39,3 @@ $GLOBALS['TL_LANG']['tl_settings']['useDompdf'] = array('DOMPDF für den PDF-Exp
  * Add fields to tl_module
  */
 $GLOBALS['TL_LANG']['tl_settings']['dompdf_legend'] = 'DOMPDF-Einstellungen';
-
-?>

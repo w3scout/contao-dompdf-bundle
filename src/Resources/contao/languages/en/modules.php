@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * Contao Open Source CMS
@@ -33,5 +33,3 @@
  * Back end modules
  */
 $GLOBALS['TL_LANG']['MOD']['dompdf'] = array('DOMPDF', 'Use DOMPDF to export articles as PDF.');
-
-?>
