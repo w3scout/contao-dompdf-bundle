@@ -36,7 +36,7 @@ use Dompdf\Dompdf;
  * Class DompdfIgniter
  *
  * Provide methods to export articles as PDF using DOMPDF.
- * 
+ *
  * @copyright  Leo Feyer 2009-2011
  * @author     Leo Feyer <http://www.contao.org>
  * @package    Controller
