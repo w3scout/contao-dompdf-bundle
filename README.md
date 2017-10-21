@@ -23,6 +23,10 @@ DOMPDF is slower than TCPDF but provides better CSS support.
 * [CSS Compatibility](https://github.com/dompdf/dompdf/wiki/CSSCompatibility)
 
 ## Installation
+Install [composer](https://getcomposer.org) if you haven't already, then enter this command in the main directory of your Contao installation:
 ```sh
 composer require w3scout/contao-dompdf-bundle
 ```
+
+## Usage
+Login to the backend of your Contao-Installation and enable Dompdf at the system settings.
