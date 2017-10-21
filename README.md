@@ -1,6 +1,7 @@
 # Contao DOMPDF Bundle
 
 [![Latest Stable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/stable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![Total Downloads](https://poser.pugx.org/w3scout/contao-dompdf-bundle/downloads)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![Latest Unstable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/unstable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![License](https://poser.pugx.org/w3scout/contao-dompdf-bundle/license)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/46c89e84-7ad0-498c-a8f7-999c7b5d03cb/mini.png)](https://insight.sensiolabs.com/projects/46c89e84-7ad0-498c-a8f7-999c7b5d03cb)
 
 ## About
 Use [DOMPDF](https://github.com/dompdf/dompdf) to export articles as PDF.  
@@ -29,4 +30,5 @@ composer require w3scout/contao-dompdf-bundle
 ```
 
 ## Usage
-Login to the backend of your Contao-Installation and enable Dompdf at the system settings.
+* Login to the backend and enable Dompdf at the system settings.
+* Go to the themes section of the backend and create a stylesheet (@media print) to style the PDF output
