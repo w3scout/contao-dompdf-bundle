@@ -24,5 +24,5 @@ DOMPDF is slower than TCPDF but provides better CSS support.
 
 ## Installation
 ```sh
-$ composer require w3scout/contao-dompdf-bundle
+composer require w3scout/contao-dompdf-bundle
 ```
