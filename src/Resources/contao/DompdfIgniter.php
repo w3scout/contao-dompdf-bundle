@@ -36,9 +36,13 @@ use Dompdf\Dompdf;
  * Class DompdfIgniter
  *
  * Provide methods to export articles as PDF using DOMPDF.
+ * 
  * @copyright  Leo Feyer 2009-2011
  * @author     Leo Feyer <http://www.contao.org>
  * @package    Controller
+ *
+ * since 2013
+ * @author     Darko Selesi <http://w3scouts.com>
  */
 
 class DompdfIgniter extends \Frontend
@@ -74,18 +78,6 @@ class DompdfIgniter extends \Frontend
 				$strHtml .= '<link rel="stylesheet" type="text/css" href="assets/css/' . $objStylesheet->name . '.css" />' . "\n";
 			}
 		}
-
-        // Generate article
-        $strArticle = html_entity_decode($strArticle, ENT_QUOTES, \Config::get('characterSet'));
-        $strArticle = $this->convertRelativeUrls($strArticle, '', true);
-
-        // Remove form elements and JavaScript links
-        $arrSearch = array
-        (
-            '@<form.*</form>@Us',
-            '@<a [^>]*href="[^"]*javascript:[^>]+>.*</a>@Us'
-        );
-        $strArticle = preg_replace($arrSearch, '', $strArticle);
 
         // URL decode image paths (see #6411)
         $strArticle = preg_replace_callback('@(src="[^"]+")@', function ($arg) {
