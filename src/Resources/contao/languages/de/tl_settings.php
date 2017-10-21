@@ -32,7 +32,7 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_settings']['useDompdf'] = array('DOMPDF für den PDF-Export verwenden', 'DOMPDF liest Stylesheets zur Formatierung der Ausgabe ein, unterstützt jedoch keine Unicode-Zeichen.');
+$GLOBALS['TL_LANG']['tl_settings']['useDompdf'] = array('DOMPDF für den PDF-Export verwenden', 'DOMPDF liest Stylesheets zur Formatierung der Ausgabe ein.');
 
 
 /**

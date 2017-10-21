@@ -32,7 +32,7 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_settings']['useDompdf'] = array('Use DOMPDF to generate PDF files', 'DOMPDF parses style sheets to format the output, however, it does not support unicode characters.');
+$GLOBALS['TL_LANG']['tl_settings']['useDompdf'] = array('Use DOMPDF to generate PDF files', 'DOMPDF parses style sheets to format the output.');
 
 
 /**
