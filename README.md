@@ -1,7 +1,6 @@
 # Contao DOMPDF Bundle
 
 [![Latest Stable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/stable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![Total Downloads](https://poser.pugx.org/w3scout/contao-dompdf-bundle/downloads)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![Latest Unstable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/unstable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![License](https://poser.pugx.org/w3scout/contao-dompdf-bundle/license)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/dd4458df-8d65-4e71-b365-46b2b99f320d/mini.png)](https://insight.sensiolabs.com/projects/dd4458df-8d65-4e71-b365-46b2b99f320d)
 
 ## About
 Use [DOMPDF](https://github.com/dompdf/dompdf) to export articles as PDF.  
