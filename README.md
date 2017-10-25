@@ -1,6 +1,10 @@
 # Contao DOMPDF Bundle
 
-[![Latest Stable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/stable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![Total Downloads](https://poser.pugx.org/w3scout/contao-dompdf-bundle/downloads)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![Latest Unstable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/unstable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle) [![License](https://poser.pugx.org/w3scout/contao-dompdf-bundle/license)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
+[![Latest Stable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/stable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
+[![Total Downloads](https://poser.pugx.org/w3scout/contao-dompdf-bundle/downloads)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/unstable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
+[![License](https://poser.pugx.org/w3scout/contao-dompdf-bundle/license)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
+[![Dependency Status](https://www.versioneye.com/user/projects/59efd6a60fb24f108275853a/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59efd6a60fb24f108275853a)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/46c89e84-7ad0-498c-a8f7-999c7b5d03cb/mini.png)](https://insight.sensiolabs.com/projects/46c89e84-7ad0-498c-a8f7-999c7b5d03cb)
 
 ## About
