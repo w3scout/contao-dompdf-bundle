@@ -69,8 +69,18 @@ class DompdfIgniter extends \Frontend
 		$objStylesheet = $this->Database->execute("SELECT * FROM tl_style_sheet");
 		while ($objStylesheet->next()) {
 			$arrMedia = deserialize($objStylesheet->media, true);
-			if (in_array('print', $arrMedia) || in_array('all', $arrMedia)) {
-				$strHtml .= '<link rel="stylesheet" type="text/css" href="/assets/css/' . $objStylesheet->name . '.css" />' . "\n";
+			if (in_array('print', $arrMedia)) {
+				$objResult = $this->Database->prepare('SELECT * FROM tl_style WHERE pid=? && invisible!=?')->execute($objStylesheet->id, 1);
+				if($objResult) {
+					$strStyles = '';
+					$arrStyles = $objResult->fetchAllAssoc();
+					if(is_array($arrStyles) && !empty($arrStyles)) {
+						foreach ($arrStyles as $s) {
+							$Stylesheet = new \StyleSheets();
+							$strStyles .= $Stylesheet->compileDefinition($s, false, array(), array(), true);
+						}
+					}
+				}
 			}
 		}
 
@@ -90,6 +100,7 @@ class DompdfIgniter extends \Frontend
 		// Make sure there is no background
 		$strHtml .= '<style type="text/css">' . "\n";
 		$strHtml .= 'body { background:none; background-color:#ffffff; }' . "\n";
+		if(!empty($strStyle)) $strHtml .= $strStyles;
 		$strHtml .= '</style>' . "\n";
 		$strHtml .= '</head>' . "\n";
 		$strHtml .= '<body>' . "\n";
@@ -100,7 +111,6 @@ class DompdfIgniter extends \Frontend
 		// Generate DOMPDF object
 		$dompdf = new Dompdf();
 		$dompdf->setPaper('A4', 'portrait');
-		$dompdf->setBasePath(TL_ROOT);
 		$dompdf->loadHtml($strHtml);
 		$dompdf->render();
 
