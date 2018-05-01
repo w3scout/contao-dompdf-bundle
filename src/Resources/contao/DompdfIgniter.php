@@ -44,7 +44,6 @@ use Dompdf\Dompdf;
  * since 2013
  * @author     Darko Selesi <http://w3scouts.com>
  */
-
 class DompdfIgniter extends \Frontend
 {
 	/**
@@ -55,8 +54,7 @@ class DompdfIgniter extends \Frontend
 	 */
 	public function generatePdf($strArticle, $objArticle)
 	{
-		if (!$GLOBALS['TL_CONFIG']['useDompdf'])
-		{
+		if (!$GLOBALS['TL_CONFIG']['useDompdf']) {
 			return;
 		}
 
@@ -67,30 +65,27 @@ class DompdfIgniter extends \Frontend
 		$strHtml .= '<title>' . $objArticle->title . '</title>' . "\n";
 		$strHtml .= '<meta http-equiv="Content-Type" content="text/html; charset=' . $GLOBALS['TL_CONFIG']['characterSet'] . '" />' . "\n";
 
-        // Add stylesheets
+		// Add stylesheets
 		$objStylesheet = $this->Database->execute("SELECT * FROM tl_style_sheet");
-		while ($objStylesheet->next())
-		{
+		while ($objStylesheet->next()) {
 			$arrMedia = deserialize($objStylesheet->media, true);
-
-			if (in_array('print', $arrMedia) || in_array('all', $arrMedia))
-			{
-				$strHtml .= '<link rel="stylesheet" type="text/css" href="assets/css/' . $objStylesheet->name . '.css" />' . "\n";
+			if (in_array('print', $arrMedia) || in_array('all', $arrMedia)) {
+				$strHtml .= '<link rel="stylesheet" type="text/css" href="/assets/css/' . $objStylesheet->name . '.css" />' . "\n";
 			}
 		}
 
-        // URL decode image paths (see #6411)
-        $strArticle = preg_replace_callback('@(src="[^"]+")@', function ($arg) {
-            return rawurldecode($arg[0]);
-        }, $strArticle);
+		// URL decode image paths (see #6411)
+		$strArticle = preg_replace_callback('@(src="[^"]+")@', function ($arg) {
+			return rawurldecode($arg[0]);
+		}, $strArticle);
 
-        // Handle line breaks in preformatted text
-        $strArticle = preg_replace_callback('@(<pre.*</pre>)@Us', function ($arg) {
-            return str_replace("\n", '<br>', $arg[0]);
-        }, $strArticle);
+		// Handle line breaks in preformatted text
+		$strArticle = preg_replace_callback('@(<pre.*</pre>)@Us', function ($arg) {
+			return str_replace("\n", '<br>', $arg[0]);
+		}, $strArticle);
 
-        // Convert the Euro symbol
-		$strArticle = str_replace('€', '', $strArticle);
+		// Convert the Euro symbol
+		$strArticle = str_replace('€', '&#8364;', $strArticle);
 
 		// Make sure there is no background
 		$strHtml .= '<style type="text/css">' . "\n";
@@ -103,8 +98,8 @@ class DompdfIgniter extends \Frontend
 		$strHtml .= '</html>';
 
 		// Generate DOMPDF object
-        $dompdf = new Dompdf();
-        $dompdf->setPaper('A4', 'portrait');
+		$dompdf = new Dompdf();
+		$dompdf->setPaper('A4', 'portrait');
 		$dompdf->setBasePath(TL_ROOT);
 		$dompdf->loadHtml($strHtml);
 		$dompdf->render();
@@ -115,3 +110,4 @@ class DompdfIgniter extends \Frontend
 		exit;
 	}
 }
+
