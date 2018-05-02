@@ -1,5 +1,6 @@
 # Contao DOMPDF Bundle
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bfae05b3e99f4dd3ae04192cb603b7b4)](https://app.codacy.com/app/w3scout/contao-dompdf-bundle?utm_source=github.com&utm_medium=referral&utm_content=w3scout/contao-dompdf-bundle&utm_campaign=badger)
 [![Latest Stable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/stable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
 [![Total Downloads](https://poser.pugx.org/w3scout/contao-dompdf-bundle/downloads)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/unstable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
