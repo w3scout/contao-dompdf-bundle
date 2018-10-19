@@ -100,7 +100,7 @@ class DompdfIgniter extends \Frontend
 		// Make sure there is no background
 		$strHtml .= '<style type="text/css">' . "\n";
 		$strHtml .= 'body { background:none; background-color:#ffffff; }' . "\n";
-		if(isset($strStyle) && !empty($strStyle)) $strHtml .= $strStyles;
+		if(isset($strStyles) && !empty($strStyles)) $strHtml .= $strStyles;
 		$strHtml .= '</style>' . "\n";
 		$strHtml .= '</head>' . "\n";
 		$strHtml .= '<body>' . "\n";
