@@ -4,7 +4,6 @@
 [![Total Downloads](https://poser.pugx.org/w3scout/contao-dompdf-bundle/downloads)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/w3scout/contao-dompdf-bundle/v/unstable)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
 [![License](https://poser.pugx.org/w3scout/contao-dompdf-bundle/license)](https://packagist.org/packages/w3scout/contao-dompdf-bundle)
-[![Dependency Status](https://www.versioneye.com/user/projects/59efd6a60fb24f108275853a/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59efd6a60fb24f108275853a)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ee7f709965f140cf86fcaf36fcf1cf76)](https://www.codacy.com/app/w3scout/contao-dompdf-bundle?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=w3scout/contao-dompdf-bundle&amp;utm_campaign=Badge_Grade)
 
 ## About
