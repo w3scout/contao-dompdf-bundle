@@ -1,123 +1,131 @@
 <?php
 
 /**
- * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
+ * This file is part of w3scout/contao-dompdf-bundle.
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * (c) 2017-2020 w3scout.
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
+ * This project is provided in good faith and hope to be usable by anyone.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Leo Feyer 2005-2017
- * @author     Leo Feyer <http://www.contao.org>
- * @package    DomPdf
- * @license    LGPL
+ * @package    w3scout/contao-dompdf-bundle
+ * @author     Darko Selesi <http://w3scouts.com>
+ * @author     Ingolf Steinhardt <info@e-spin.de>
+ * @copyright  2017-2020 w3scout.
+ * @license    https://github.com/w3scout/contao-dompdf-bundle/blob/master/LICENSE LGPL-3.0-or-later
  * @filesource
  */
 
 namespace W3Scout\DompdfBundle;
 
+use Contao\Environment;
+use Contao\Idna;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * Class DompdfIgniter
- *
- * Provide methods to export articles as PDF using DOMPDF.
- *
- * @copyright  Leo Feyer 2009-2011
- * @author     Leo Feyer <http://www.contao.org>
- * @package    Controller
- *
- * since 2013
- * @author     Darko Selesi <http://w3scouts.com>
  */
 class DompdfIgniter extends \Frontend
 {
-	/**
-	 * Export an article to PDF
-	 * @param string
-	 * @param object
-	 * @return string
-	 */
-	public function generatePdf($strArticle, $objArticle)
-	{
-		if (!$GLOBALS['TL_CONFIG']['useDompdf']) {
-			return;
-		}
+    /**
+     * Export an article to PDF
+     *
+     * @param string
+     * @param object
+     *
+     * @return string
+     */
+    public function generatePdf($strArticle, $objArticle)
+    {
+        if (!$GLOBALS['TL_CONFIG']['useDompdf']) {
+            return;
+        }
 
-		// Add head section
-		$strHtml = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' . "\n";
-		$strHtml .= '<html xmlns="http://www.w3.org/1999/xhtml">' . "\n";
-		$strHtml .= '<head>' . "\n";
-		$strHtml .= '<title>' . $objArticle->title . '</title>' . "\n";
-		$strHtml .= '<meta http-equiv="Content-Type" content="text/html; charset=' . $GLOBALS['TL_CONFIG']['characterSet'] . '" />' . "\n";
+        // Add head section
+        $strHtml =
+            '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
+            . "\n";
+        $strHtml .= '<html xmlns="http://www.w3.org/1999/xhtml">' . "\n";
+        $strHtml .= '<head>' . "\n";
+        $strHtml .= '<title>' . $objArticle->title . '</title>' . "\n";
+        $strHtml .= '<meta http-equiv="Content-Type" content="text/html; charset='
+                    . $GLOBALS['TL_CONFIG']['characterSet'] . '" />' . "\n";
 
-		// Add stylesheets
-		$objStylesheet = $this->Database->execute("SELECT * FROM tl_style_sheet");
-		while ($objStylesheet->next()) {
-			$arrMedia = deserialize($objStylesheet->media, true);
-			if (in_array('print', $arrMedia)) {
-				$objResult = $this->Database->prepare('SELECT * FROM tl_style WHERE pid=? && invisible!=?')->execute($objStylesheet->id, 1);
-				if($objResult) {
-					$strStyles = '';
-					$arrStyles = $objResult->fetchAllAssoc();
-					if(is_array($arrStyles) && !empty($arrStyles)) {
-						foreach ($arrStyles as $s) {
-							$Stylesheet = new \StyleSheets();
-							$strStyles .= $Stylesheet->compileDefinition($s, false, array(), array(), true);
-						}
-					}
-				}
-			}
-		}
+        // Add stylesheets
+        $objStylesheet = $this->Database->execute("SELECT * FROM tl_style_sheet");
+        while ($objStylesheet->next()) {
+            $arrMedia = deserialize($objStylesheet->media, true);
+            if (in_array('print', $arrMedia)) {
+                $objResult = $this->Database->prepare('SELECT * FROM tl_style WHERE pid=? && invisible!=?')->execute(
+                    $objStylesheet->id,
+                    1
+                );
+                if ($objResult) {
+                    $strStyles = '';
+                    $arrStyles = $objResult->fetchAllAssoc();
+                    if (is_array($arrStyles) && !empty($arrStyles)) {
+                        foreach ($arrStyles as $s) {
+                            $Stylesheet = new \StyleSheets();
+                            $strStyles  .= $Stylesheet->compileDefinition($s, false, [], [], true);
+                        }
+                    }
+                }
+            }
+        }
 
-		// URL decode image paths (see #6411)
-		$strArticle = preg_replace_callback('@(src="[^"]+")@', function ($arg) {
-			return rawurldecode($arg[0]);
-		}, $strArticle);
+        // URL decode image paths (see #6411)
+        $strArticle = preg_replace_callback(
+            '@(src="[^"]+")@',
+            function ($arg) {
+                return rawurldecode($arg[0]);
+            },
+            $strArticle
+        );
 
-		// Handle line breaks in preformatted text
-		$strArticle = preg_replace_callback('@(<pre.*</pre>)@Us', function ($arg) {
-			return str_replace("\n", '<br>', $arg[0]);
-		}, $strArticle);
+        // Handle line breaks in preformatted text
+        $strArticle = preg_replace_callback(
+            '@(<pre.*</pre>)@Us',
+            function ($arg) {
+                return str_replace("\n", '<br>', $arg[0]);
+            },
+            $strArticle
+        );
 
-		// Convert the Euro symbol
-		$strArticle = str_replace('€', '&#8364;', $strArticle);
+        // Convert the Euro symbol
+        $strArticle = str_replace('€', '&#8364;', $strArticle);
 
-		// Make sure there is no background
-		$strHtml .= '<style type="text/css">' . "\n";
-		$strHtml .= 'body { background:none; background-color:#ffffff; }' . "\n";
-		if(isset($strStyles) && !empty($strStyles)) $strHtml .= $strStyles;
-		$strHtml .= '</style>' . "\n";
-		$strHtml .= '</head>' . "\n";
-		$strHtml .= '<body>' . "\n";
-		$strHtml .= $strArticle . "\n";
-		$strHtml .= '</body>' . "\n";
-		$strHtml .= '</html>';
+        // Make sure there is no background
+        $strHtml .= '<style type="text/css">' . "\n";
+        $strHtml .= 'body { background:none; background-color:#ffffff; }' . "\n";
+        if (isset($strStyles) && !empty($strStyles)) {
+            $strHtml .= $strStyles;
+        }
+        $strHtml .= '</style>' . "\n";
+        $strHtml .= '</head>' . "\n";
+        $strHtml .= '<body>' . "\n";
+        $strHtml .= $strArticle . "\n";
+        $strHtml .= '</body>' . "\n";
+        $strHtml .= '</html>';
+        $strHtml = str_replace(
+            'src="files',
+            'src="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/files',
+            $strHtml
+        );
 
-		// Generate DOMPDF object
-		$dompdf = new Dompdf();
-		$dompdf->setPaper('A4', 'portrait');
-		$dompdf->loadHtml($strHtml);
-		$dompdf->render();
+        // Generate DOMPDF object
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->loadHtml($strHtml);
+        $dompdf->render();
 
-		$dompdf->stream(standardize(ampersand($objArticle->title, false)));
+        $dompdf->stream(standardize(ampersand($objArticle->title, false)));
 
-		// Stop script execution
-		exit;
-	}
+        // Stop script execution
+        exit;
+    }
 }
-
