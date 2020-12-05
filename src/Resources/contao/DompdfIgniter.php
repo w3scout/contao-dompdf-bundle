@@ -118,6 +118,7 @@ class DompdfIgniter extends \Frontend
         // Generate DOMPDF object
         $options = new Options();
         $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
         $dompdf = new Dompdf($options);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->loadHtml($strHtml);
