@@ -20,7 +20,7 @@
   "require": {
     "php": ">=7.1.0",
     "contao/core-bundle": "^4.4",
-    "dompdf/dompdf": ">=2.0.1"
+    "dompdf/dompdf": ">=2.0.4"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0"
